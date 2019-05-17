@@ -1,0 +1,168 @@
+% !TeX root = ../main.tex
+
+\chapter{NV色心退相干研究与动力学去耦序列}
+在第二章中，本文介绍了NV磁力计的基本原理，并讨论了限制系统传感灵敏度的主要因素。其中，不论是对于直流场探测还是交流场的探测，其灵敏度都受到系统相干时间的影响。因此，研究系统的相干性具有实际意义。
+
+一般来说，对于固体的电子自旋，其弛豫通道主要有下面几个方面：一是轨道自旋耦合所导致的声子散射；固体中的顺磁杂质；电子自旋和固体中原子核的超精细相互作用。对金刚石来说，其轨道自旋相互作用很弱，所以NV具有很长的自旋晶格弛豫时间（T1），室温下便可达数\si{ms}。所以，NV的退相干过程主要是NV与样品顺磁杂质（$P_1$）和核子（$\leftidx{13}C$）的相互作用。另一方面，相关文献指出，考虑NV与电子顺磁杂质相互作用下，系统的自旋弛豫时间$T_2^*=(g \mu_B)^2 n_N$，$n_N$为N杂质（电子顺磁杂质）的浓度。在$n_N < 10 \si{ppm}$的情况下，与电子和C核相互作用相比，电子与电子相互作用效应很弱，可以忽略。因此,本文接下来主要讨论电子与C核相互作用对退相干产生的影响。此外，动力学退耦脉冲可以提高电子的自旋弛豫时间。
+
+在本章接下来的几节中，我们先介绍常用的动力学退耦序列，接下来讨论分析电子退相干过程的两大方便，讨论中本文会分别使用经典和量子两种方法对NV和$\leftidx{13}C$浴池的相互作用进行研究，最后一节本会讨论在操作脉冲存在误差的情况下，相应理论的修正形式。
+\section{动力学去耦序列简介}
+本节介绍三种常用的动力学去耦序列。
+\subsection{CPMG}
+CPMG脉冲广泛运用在核磁共振的探测领域。CPMG脉冲是前面章节中提到的自旋回波脉冲的一种扩展。其具体形式见图3.1（b）。与Spin-echo相比，CMPG脉冲增加了对焦脉冲的数量。除此之外，在一些文献中指出，CPMG脉冲还可以调制$\pi/2$脉冲和$\pi$脉冲XY脉冲可以看作是CPMG脉冲的一个扩展。其具体形式见图3.1（c）。XY脉冲可以同时脉冲在X和Y方向的操作误差。具体来说，XY脉冲调制了$\pi$脉冲的转轴，使得对焦脉冲的转轴以X-Y-X-Y...形式变化。
+之间的相位，如$\pi/2$脉冲绕轴旋转，则$\pi$可以绕Y轴旋转。这样，脉冲可以自行补偿X方向操作误差。
+\subsection{XY}
+XY脉冲可以看作是CPMG脉冲的一个扩展。其具体形式见图3.1（c）。XY脉冲可以同时脉冲在X和Y方向的操作误差。具体来说，XY脉冲调制了$\pi$脉冲的转轴，使得对焦脉冲的转轴以X-Y-X-Y...形式变化。
+\subsection{Uhrig}
+Uhrig Dynamical Decoupling Pulse (UDD) 脉冲是CPMG脉冲的另一种扩展。其具体形式见图3.1（d）。 在CPMG脉冲中，相邻$\pi$脉冲之间的间隔是相同的，UDD脉冲中改变了相邻$\pi$脉冲之间的间隔。UDD脉冲特别适合具有高频截止特性的噪音场，但NV色心的噪音谱是平滑的。UDD脉冲并不适合NV系统。
+
+\section{NV自旋弛豫动力学}
+本节运用两种理论讨论NV色心的电子自旋弛豫过程，分别为量子和经典两种。
+\subsection{NV自旋弛豫动力学-噪音场经典处理方法}
+\subsubsection{理论}
+我们假设NV与环境的相互作用可以用一个随机涨落磁场来近似$b(t)$来近似。我们进一步假设$b(t)$的平均值为零，并且存在相应的功率谱函数$S_b(w)$。考虑$b(t)$, 我们系统的哈密顿量写出系统的哈密顿量如下(在与NV共振频率同步的旋转参考系中写出)：
+\begin{equation}
+    H=H_0+H_c
+\end{equation}
+式子中，
+\begin{equation}
+H_0=\gamma_{e} b(t) S_z
+\end{equation}
+\begin{equation}
+ H_c=\sum\limits_{n=1}^N \Omega(t-t_m) S_x
+\end{equation}
+哈密顿量的前一部分描述噪音场，而后一部分表述施加的微波脉冲序列。接下来，我们切换到与$H_c$同步的参考系中，该参考系中，系统的哈密顿为，
+\begin{equation}
+    \widetilde{H}_0(t)=U_c^\dagger(t)H_0(t)U_c(t)
+\end{equation}
+其中，$U_c(t)=exp(-\num{i}\int_0^t H_c(s) d s)$。
+在新的参考系中系统的时间演化算符为,系统的时间演化算符满足以下方程，
+\begin{equation}
+    i\frac{d}{dt}\widetilde{U}(t)=\widetilde{H}_0(t)\widetilde{U}(t)
+\end{equation}
+在理想无误的脉冲形式下，新参考系中的哈密顿量可以直接写出为，
+\begin{equation}
+    \widetilde{H}_0(t)=\frac{\gamma_{e}}{2}\ f(t)\ b(t)\ \sigma_y
+\end{equation}
+图3.2画出了CPMG-8脉冲下，$f(t)$所具有的形式。
+此时，系统的时间演化算符可以方便的写出，
+\begin{equation}
+    \widetilde{U}(t)=exp\left (-\num{i}\frac{\gamma_{e}}{2} \int_0^t f(t)\ b(t)\ \sigma_y \right )
+\end{equation}
+根据量子测量的基本原理,系统的相干性具有以下表达式$L=\frac{1}{4}\left \langle |Tr(\widetilde{U}(\tau))|^2  \right \rangle$，
+该式子可以进一步化简为如下形式，
+\begin{equation}
+    L=\frac{1}{2}+\frac{1}{2}exp(-\langle \Phi^2 \rangle /2)
+\end{equation}
+式子中，$\Phi=\frac{\gamma_{e}}{2}\int_0^t f(t)\ b(t) dt$。
+计算相位，我们可以得到
+\begin{equation}
+    \langle \Phi^2 \rangle=\frac{\gamma_{e}^2}{4} \left \langle \int_0^t \int_0^t dt_1 dt_2 b(t_1)f(t_1) b(t_2) f(t_2) \right \rangle
+\end{equation}
+噪音场的功率谱函数定义如下，
+\begin{equation}
+    \langle b(t_1)b(t_2) \rangle=\frac{1}{\pi}\int_0^\infty dw S(w) exp(-\num{i} w (t_2-t_1))
+\end{equation}
+对$f(t)$定义如下变换，
+\begin{equation}
+    \widetilde{f}(w)=-\num{i} w \int_0^t dt f(t) exp(-\num{i}wt)
+\end{equation}
+将上面两个式子代入，可以得到系统的相干性具有表达式，
+\begin{equation}
+    L(\tau)=\exp\left (-\frac{1}{2} \frac{\gamma_{e}^2}{\pi} \int_0^\infty dw S(w) \frac{|\widetilde{f}(w)|^2}{w^2} \right )
+\end{equation}
+\subsubsection{噪音场功率函数}
+从上面的式子中，要研究系统的退相干动力学包括两个要素，一是脉冲的滤波函数，二是噪音场的功率谱函数。其中，滤波函数可以由上节介绍的方法求出，本节给出估计噪音场功率谱函数的方法。
+
+在外加磁场不强的情况下，系统所处的温度远高于赛曼劈裂所对应的温度。在这样的假设下，可以认为自旋浴池中所有$\leftidx{^{13}} C$自旋的取向随机，并且任意碳核的自旋取向无关联性。此时，系统的噪音谱可以假设是洛伦兹型的，
+\begin{equation}
+    S(w)=\frac{\Delta^2 \tau_c}{\pi}\frac{1}{1+(w \tau_c)^2}
+\end{equation}
+
+由上式，噪音谱主要由两个参数决定：$\Delta$是NV和C核耦合强度的平均值，而$\tau_c$为C核自旋的退相干时间，与C核和C核之间的相互作用有关。具体而言，$\Delta$用NV和C核间磁偶极相互作用来计算，相关时间$\tau_c$以碳核间磁偶极相互作用来计算。一般情况下，有以下关系，$\Delta \propto n_{C} $, 和$\tau_c \propto \frac{1}{n_{C}}$，$n_C$为C核的浓度。
+
+\subsection{NV自旋弛豫动力学-噪音场量子处理方法}
+\subsubsection{理论}
+\paragraph{哈密顿量}
+NV电子自旋和$\leftidx{^{13}}C$自旋浴池相互作用的哈密顿可以写为
+\begin{equation}
+    H=H_{NV}+H_{bath}+H_{int}
+\end{equation}
+上式中，
+\begin{equation}
+    H_{NV}=\gamma_{e}\bm{B}\cdot\bm{S}+D_{gs}S_z^2
+\end{equation}
+\begin{equation}
+    H_{bath}=-\gamma_{n} \bm{B}\cdot \sum_i \bm{I_i}+H_{dip}
+\end{equation}
+$H_{dip}$为$\leftidx{^{13}}C$自旋浴池中C核间的磁偶极相互作用，具体形式如下
+\begin{equation}
+    H_{dip}=\sum_{i<j} D_{ij} [\bm{I_i} \cdot \bm{I_j}-3\frac{(\bm{I_i}\cdot \bm{r_{ij}})(\bm{I_j}\cdot \bm{r_{ij}})}{r_{ij}^2}    ] 
+\end{equation}
+其中，$r_{ij}$为两个C核之间的距离，$D_{ij}$为其相互作用强度，$D_{ij}=\mu_0 \gamma_{n}^2 / 4 \pi r_{ij}^3$。
+哈密顿的最后一项是电子自旋和核自旋间的磁偶极相互作用，
+\begin{equation}
+    H_{int}=\bm{S} \cdot \sum_i \bm{A}_i \cdot \bm{I}_i
+\end{equation}
+式子中，${A}_i$是电子自旋和核自旋之间的相互作用张量，排除掉在电子自旋最近几个壳层内的C核，电子自旋和C核之间主要是磁偶极相互作用，所以该张量具有以下表达式,设核子和NV之间距离为$r_i$,
+\begin{equation}
+    \bm{A}_i=\frac{\mu_0}{4 \pi}\frac{\gamma_e \gamma_n}{r_i^3}\left (1-3\frac{\bm{r_i}\bm{r_i}}{r_i^2}\right )
+\end{equation}
+
+
+\paragraph{近似}
+当外磁场的方向和NV对称轴的方向平行，这时，以NV电子自旋$S_z$对应的本征基重新写上述哈密顿量：
+
+\begin{equation}
+ H_{int}=\sum_{m,n=-1}^{+1}|m\rangle\langle n| \otimes \bm{S}_{mn}\cdot \sum_i \bm{A}_i \cdot \bm{I}_i
+\end{equation}
+
+由于NV的零场劈裂大小在$\si{GHz}$量子，远大于NV和C核之间的耦合强度，所以仅保留式（3.20）中对角分量，
+\begin{equation}
+    H=\sum_{m} |m\rangle\langle m| \otimes H^{(m)}
+\end{equation}
+\begin{equation}
+    H^{(m)}=w_m+H_{bath}+\sum_i m (\hat{\bm{z}} \cdot \bm{A}_i) \cdot \bm{I}_i
+\end{equation}
+
+\paragraph{团簇展开}
+在没有NV电子自旋间能态跃迁的情况下，系统的的相干性可以用自旋在XY平面内的大小的平均值来表示：
+\begin{equation}
+    L=\frac{Tr[\rho(t) S^{+}]}{Tr[\rho(0) S^{+}]}
+\end{equation}
+
+式(3.23)中，$S^{+}=S_x+\num{i} S_y$,为测量自旋在XY平面内的大小的算符，取平均通过引入密度算符来实现。其中，初始状态下，NV为纯态，如$S_x$的本质态；核自旋处在最大混合态上。密度算法按式（3.21）所述的哈密顿量进行演化。
+
+具体计算NV$|m\rangle$和$|n\rangle$态之间的相干性，式(3.23)可以化简为
+\begin{equation}
+    L=Tr_B[... e^{-\num{i} H^{(m)}\tau_2} e^{-\num{i} H^{(n)}\tau_1} e^{\num{i} H^{(m)}\tau_1} e^{\num{i} H^{(n)}\tau_2}...]
+\end{equation}
+
+直接计算这式子是不可能的，所以我们引人统计物理学中的团簇展开方法，
+\begin{equation}
+    L(t)=\prod_C \tilde{L}_C(t)
+\end{equation}
+
+式（3.25）$\tilde{L}_C(t)$是考率C阶团簇后，对相干性贡献的修正系数，
+\begin{equation}
+    \tilde{L}_C(t)=\frac{L_C(t)}{\prod_{C^{'} \in C} \tilde{L}_{C^{'}}(t) }
+\end{equation}
+
+\paragraph{FID}
+
+\paragraph{Spin-Echo}
+
+\subsection{结论的扩展}
+在实际应用中，操作脉冲的实际作用效果很难与理论一致，相应的理论需要进一步修正。此外，前面的结论都是针对态的保真度情况下定义，在脉冲存在误差的情况下，并不等价于测量得到的结果，所以本节根据实际测量对上述结论做进一步的修正。
+\subsubsection{经典处理方法的扩展}
+\paragraph{脉冲操作误差}
+对经典处理方法，主要对式子（3.6）进行修正，当脉冲非完美时，在新参考系中，噪音会同时在3个方向均有影响。（3.6）修正为
+
+\begin{equation}
+    \widetilde{H}_0(t)=\frac{\gamma_{e}}{2}\  b(t) \ \sum_{i=x,y,z} f_i(t)\  \sigma_i
+\end{equation}
+
+$f_i(t)$的定义和之前相同，不过由于脉冲的操作错误$f_i(t)$无法直接得出，计算由下式：$\sum_{i=x,y,z} f_i(t)\  \sigma_i=U_c^\dagger(t)\sigma_z U_c(t)$
+图（3. ）中，画出了CPMG-8脉冲$f(t)$对时间的关系。
+\paragraph{测量修正}
+本段给出实际测量情况下，表达式的修正。
